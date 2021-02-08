@@ -23,7 +23,7 @@ readfile($url);
 
 function isImage($mime)
 {
-	$available_mimes = array('image/jpeg', 'image/jpg', 'image/png', 'image/webp');
+	$available_mimes = array('image/jpeg', 'image/jpg', 'image/png', 'image/webp',, 'image/gif');
 	if (in_array($mime, $available_mimes)) {
 		return true;
 	} else {
