@@ -24,6 +24,8 @@ if (isImage($mime) == false || isUrl($url) == false) {
 	header('HTTP/1.0 403 Forbidden');
 	return;
 }
+// header("Height: " . strval($imginfo[0]));
+// header("Width: " . strval($imginfo[1]));
 header("Content-type: " . $imginfo['mime']);
 readfile($url);
 
