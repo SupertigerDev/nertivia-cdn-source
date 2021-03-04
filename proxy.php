@@ -10,15 +10,20 @@ if (isset($_GET['url'])) {
 	exit();
 }
 
+
+if (url($url) === "https://media.nertivia.net") {
+	header("Location: " . $url);
+	return;
+}
+
+
+
 $imginfo = getimagesize($url);
 $mime = $imginfo['mime'];
 if (isImage($mime) == false || isUrl($url) == false) {
 	header('HTTP/1.0 403 Forbidden');
 	return;
 }
-
-header("Height: " . strval($imginfo[0]));
-header("Width: " . strval($imginfo[1]));
 header("Content-type: " . $imginfo['mime']);
 readfile($url);
 
@@ -42,3 +47,8 @@ function isUrl($url)
 		return false;
 	}
 }
+
+function url($url) {
+	$result = parse_url($url);
+	return $result['scheme']."://".$result['host'];
+  }
