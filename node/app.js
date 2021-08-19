@@ -7,6 +7,12 @@ const serveStatic = require('serve-static');
 const gifFrames = require('gif-frames');
 
 
+app.use(function (req, res, next) {
+
+    res.setHeader('Access-Control-Allow-Origin', 'https://nertivia.net');
+    next();
+});
+
 
 app.get("/emojis/:emojiname", (req, res, next) => {
     if (!req.query) return next()
